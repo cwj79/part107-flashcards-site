@@ -37,9 +37,11 @@
     padding: 14px 32px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 10px 16px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.25);
   }
+  .header-title { min-width: 0; }
   .faa-seal {
     width: 52px; height: 52px;
     background: white;
@@ -533,7 +535,10 @@
     .results-stats { grid-template-columns: 1fr 1fr; }
     .question-card { padding: 18px; }
     header { padding: 12px 16px; }
+    .faa-seal { width: 42px; height: 42px; font-size: 11px; }
     header h1 { font-size: 1rem; }
+    header p { font-size: 0.72rem; }
+    .header-right { margin-left: 0; text-align: left; font-size: 0.72rem; }
     .exam-topbar { flex-wrap: wrap; }
   }
 </style>
@@ -542,12 +547,12 @@
 
 <header>
   <div class="faa-seal">FAA</div>
-  <div>
+  <div class="header-title">
     <h1>FAA Part 107 Knowledge Test — Exam Simulator</h1>
     <p>Remote Pilot Certificate for Small Unmanned Aircraft Systems (sUAS)</p>
   </div>
   <div class="header-right">
-    <a href="index.html" style="color:white;font-size:0.78rem;text-decoration:none;border:1px solid rgba(255,255,255,0.4);padding:6px 12px;border-radius:6px;opacity:0.9;display:inline-block;margin-bottom:4px;">← Flashcards</a>
+    <a href="index.html" style="color:white;font-size:0.78rem;text-decoration:none;border:1px solid rgba(255,255,255,0.4);padding:6px 12px;border-radius:6px;opacity:0.9;display:inline-block;margin-bottom:4px;white-space:nowrap;">← Flashcards</a>
     <div>Unofficial Practice Exam<br>Not affiliated with FAA</div>
   </div>
 </header>

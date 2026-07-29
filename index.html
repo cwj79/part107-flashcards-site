@@ -34,7 +34,8 @@
     padding: 14px 32px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 10px 16px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.25);
   }
   .faa-seal {
@@ -45,11 +46,13 @@
     font-weight: 900; font-size: 12px; color: var(--blue);
     letter-spacing: -0.5px; flex-shrink: 0;
   }
+  .header-title { min-width: 0; }
   header h1 { font-size: 1.1rem; font-weight: 700; }
   header p { font-size: 0.76rem; opacity: 0.8; margin-top: 2px; }
   .header-right { margin-left: auto; }
   a.simlink {
-    color: white; font-size: 0.78rem; text-decoration: none;
+    display: inline-block;
+    color: white; font-size: 0.78rem; text-decoration: none; white-space: nowrap;
     border: 1px solid rgba(255,255,255,0.4); padding: 6px 12px; border-radius: 6px;
     opacity: 0.9;
   }
@@ -133,7 +136,7 @@
   .flashcard {
     position: relative;
     width: 100%;
-    min-height: 320px;
+    min-height: clamp(280px, 48vh, 340px);
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.5s cubic-bezier(.4,.2,.2,1);
@@ -149,6 +152,8 @@
     padding: 32px;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .face-front { background: white; }
   .face-back { background: var(--blue-light); transform: rotateY(180deg); }
@@ -272,10 +277,27 @@
   .empty-state h2 { color: var(--blue); margin-bottom: 8px; }
   .empty-state p { color: var(--gray); font-size: 0.9rem; margin-bottom: 18px; }
 
-  @media (max-width: 520px) {
+  @media (max-width: 600px) {
+    main { padding: 0 12px; margin-top: 16px; }
     header { padding: 12px 16px; }
-    .card-question { font-size: 1.08rem; }
-    .flashcard { min-height: 360px; }
+    .faa-seal { width: 40px; height: 40px; font-size: 11px; }
+    header h1 { font-size: 1rem; }
+    header p { font-size: 0.72rem; }
+    .header-right { margin-left: 0; width: 100%; }
+    a.simlink { display: inline-block; }
+    .toolbar { padding: 12px; gap: 8px; }
+    #category-select, #mode-select { flex: 1 1 100%; }
+    .stat-pill { font-size: 0.72rem; padding: 4px 8px; }
+    .face { padding: 20px; }
+    .card-question { font-size: 1.05rem; }
+    .card-answer { font-size: 1.05rem; }
+    .rate-row { gap: 8px; }
+    .rate-btn { padding: 13px 8px; font-size: 0.88rem; }
+  }
+
+  @media (max-width: 360px) {
+    .flashcard { min-height: clamp(260px, 52vh, 320px); }
+    .face { padding: 16px; }
   }
 </style>
 </head>
@@ -283,7 +305,7 @@
 
 <header>
   <div class="faa-seal">FAA<br>107</div>
-  <div>
+  <div class="header-title">
     <h1>Part 107 Flashcards</h1>
     <p>Remote Pilot Certificate — Aeronautical Knowledge Review</p>
   </div>
